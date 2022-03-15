@@ -1,0 +1,150 @@
+
+Business requirements:
+
+--> I need a app that used to manage my day to day tasks
+
+
+Analysis:
+--------
+
+what kind of tasks you do?
+
+
+models:
+-------
+
+categeries
+----------
+personal
+professional
+families
+
+
+tasks:
+ --> name
+ --> categoryID
+ --> description
+ --> due_date
+ --> complete_date
+ --> created_date
+ 
+ 
+urls:
+  --> todo list url:
+     http://127.0.0.1:8000/todo/todo-list --> view()
+  --> create task:
+      http://127.0.0.1:8000/todo/create  --> get --> return template
+	  http://127.0.0.1:8000/todo/create  --> post --> process data and return success msg
+  --> update tasks:
+       http://127.0.0.1:8000/todo/edit/<id>   -> get --> view --> fecth data from db and prepopulate form and return
+	   http://127.0.0.1:8000/todo/edit/<id>  -->  PUT --> view --> update db 
+  
+  --> Detete the tasks
+       http://127.0.0.1:8000/todo/delete/<id>  --> Detete --> view (delete from db)
+
+
+tech stack:
+----------
+programming language: python3+ 
+
+web framework --> django latest version
+
+Database : mysql
+
+UI --> HTML, css, js, boostrap 
+
+-------------------------------
+
+lets start creating project from scratch:
+
+
+1) crate dev envirnonment
+
+  --> create virtualenv
+     $ virtualenv todoenv
+	 
+	 -> activate envirnonment
+	 $ todoenv\Scripts\activate
+
+  --> install project dependencies modules
+  
+     -> django
+	 $ pip install django==4.0.3
+	 
+	 check version:
+	 >>> import django
+	 >>> django.get_version
+	<function get_version at 0x000001DBAF7A9AB0>
+	>>> django.get_version()
+	'4.0.3'
+	>>> exit()
+
+
+2) create django project and app
+
+   --> create django project
+     $ django-admin startproject todoproject
+   
+   --> create app in todoproject
+     $ django-admin startapp todoapp
+	 
+   note: need to register app in django setting.py installed_apps list
+
+3) data base settings:
+   # open mysql command line
+   # enter password
+   # CREATE DATABASE mytodo;
+   # use mytodo;
+   # show tables;
+
+
+   $ pip install mysqlclient
+
+
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mytodo',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+--> static config homework?
+
+--> lets create django models for todo app
+
+--> python manage.py makemigrations
+
+--> python manage.py migrate
+
+
+
+	 
+	 
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+

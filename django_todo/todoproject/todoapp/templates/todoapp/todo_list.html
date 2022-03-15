@@ -1,0 +1,37 @@
+{% extends 'todoapp/base.html' %}
+
+{% block title %}
+<title> To do list</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <table>
+    <tr>
+    <td> Task Title</td>
+    <td> Description</td>
+    <td> Due Date</td>
+    <td> Create Date</td>
+    <td> Completed Date</td>
+        <td> Action</td>
+    </tr>
+
+    {% for task in todo_list %}
+       <tr>
+           <td> {{task.title}}</td>
+            <td> {{task.description }}</td>
+           <td> {{task.due_date |date:'d-m-Y' }}</td>
+            <td> {{task.created_date |date:'d-m-Y' }}</td>
+            <td> {{task.completed_date |date:'d-m-Y'}}</td>
+           <td> <a href="{% url 'todo-edit' task.id %}">EDIT</a>
+               | <a href="{% url 'todo-delete' task.id %}">DELETE</a></td>
+       </tr>
+    {% endfor %}
+</table>
+
+
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,14 @@
+{% extends 'todoapp/base.html' %}
+
+{% block title %}
+<title> Edit Task</title>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'todo-edit' id %}">
+    <input type="hidden" name="_method" value="PUT">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Save</button>
+</form>
+{% endblock %}
